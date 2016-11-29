@@ -9,8 +9,9 @@ class LocationsController < ApplicationController
                           })
 
   def info
+    @location = Location.new
     @search = params[:search]
-    @responses = client.search("%#{params[:search]}%", { term: 'resturant', sort:5 })
+    @responses = client.search("%#{params[:search]}%", { term: 'location', sort:5 })
     render json: @responses
 
     @responses.businesses.each do |foodPlace|
