@@ -1,0 +1,1 @@
+json.array! @geocodes, partial: 'geocodes/geocode', as: :geocode

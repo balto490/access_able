@@ -1,0 +1,51 @@
+<h1>New Location</h1>
+
+<%= form_for @geocode do |f| %>
+		<%= f.label "address" %>: 
+		<br>
+		<%= f.text_field :address %>
+		<br>
+
+<%= form_for @location do |f| %>
+		<%= f.label "name" %>: 
+		<br>
+		<%= f.text_field :name %>
+		<br>
+		<%= f.label "address" %>: 
+		<br>
+		<%= f.text_field :address %>
+		<br>
+		<%= f.label "category" %>
+		<br>
+		<%= f.select(:category, options_for_select(["Food", "Coffee", "Nightlife", "Entertainment", "Culture", "Shopping"]), {:prompt => 'Select Category'}) %>
+		<br> 
+		<%= f.label "rating" %>: 
+		<br>
+		<%= f.text_field :rating %>
+		<br>
+		<%= f.label "ramp"%>:
+		<br>
+		<%= f.select(:ramp, options_for_select(["Yes", "No"]), {:prompt => 'Is there a ramp?'}) %>
+		<br>
+		<%= f.label "step" %>:
+		<br>
+		<%= f.select(:step, options_for_select(["Yes", "No"]), {:prompt => 'Are there steps?'})  %>
+		<br>
+		<%= f.label "seating" %>:
+		<br>
+		<%= f.select(:seating, options_for_select(["Yes", "No"]), {:prompt => 'Is there wheelchair accessable seating?'}) %>
+		<br>
+		<%= f.label "scooter" %>:
+		<br>
+		<%= f.select(:scooter, options_for_select(["Yes", "No"]), {:prompt => 'Scooter accessable?'}) %>
+		<br>
+		<%= f.label "comment" %>:
+		<br>
+		<%= f.text_field :comment %>
+		<br>
+		 <%= f.hidden_field :user_id, :value => current_user.id %>
+		
+
+<%= f.submit "Bonzaaiiii" %>
+<% end %>
+<%= link_to 'Back', locations_path %>
