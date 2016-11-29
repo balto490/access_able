@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   #match 'auth/:provider/callback', to: 'welcome#index'
 
   get '/' => 'welcome#index'
+  get '/locations/info', to: 'locations#info'
   
 
 end
