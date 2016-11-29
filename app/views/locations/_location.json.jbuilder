@@ -1,8 +1,8 @@
 json.extract! location, :id, :created_at, :updated_at
 json.url location_url(location, format: :json)
 
-json.resturants do
-   json.array!(@resturants) do |resturant|
-     json.extract! resturant, :id, :name
+json.locations do
+   json.array!(@locations) do |location|
+     json.extract! location, :id, :name
    end
  end

@@ -1,16 +1,16 @@
 class LocationsController < ApplicationController
   require "yelp"
-  before_action :set_location, only: [:show, :edit, :update, :destroy]
+  #before_action :set_location, only: [:show, :edit, :update, :destroy]
   
- client = Yelp::Client.new({ consumer_key: ENV["YOUR_CONSUMER_KEY"],
-                            consumer_secret: ENV["YOUR_CONSUMER_SECRET"],
-                            token: ENV["YOUR_TOKEN"],
-                            token_secret: ENV["YOUR_TOKEN_SECRET"]
+ client = Yelp::Client.new({ consumer_key: ENV["YELP_CONSUMER_KEY"],
+                            consumer_secret: ENV["YELP_CONSUMER_SECRET"],
+                            token: ENV["YELP_TOKEN"],
+                            token_secret: ENV["YELP_TOKEN_SECRET"]
                           })
 
   def info
     @search = params[:search]
-    @responses = client.search("%#{params[:search]}%", { term: 'resturant', offset: 40 })
+    @responses = client.search("%#{params[:search]}%", { term: 'resturant', sort:5 })
     render json: @responses
 
     @responses.businesses.each do |foodPlace|
@@ -36,23 +36,23 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.json
   def index
-    
-   if user_signed_in?
-    @user = User.find_by_id(current_user.id)
-    params[:id] = current_user.id
-    p "not signed in"
-   else
-    @locations = Location.all
-    p "#{current_user} signed in"
-   end
-   p @locations
+   @locations = Location.all
+   # if !user_signed_in?
+   #  @user = User.find_by_id(current_user.id)
+   #  params[:id] = current_user.id
+   #  p "not signed in"
+   # else
+   #  @locations = Location.all
+   #  p "#{current_user} signed in"
+   # end
+   # p @locations
   end
 
   # GET /locations/1
   # GET /locations/1.json
   def show
-    @name = params[:url]
-    @location = Location.find_by(phone: @name)
+    # @name = params[:url]
+    #@location = Location.find_by(phone: @name)
   end
 
   # GET /locations/new

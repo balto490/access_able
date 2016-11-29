@@ -8,6 +8,7 @@ gem 'omniauth-yelp'
 gem 'therubyracer'
 gem 'devise'
 gem 'geocoder'
+gem 'area'
 gem 'yelp', require: 'yelp'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

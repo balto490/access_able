@@ -24,48 +24,23 @@
 // new google.maps.Map(document.getElementById('map'), mapOptions);
 
 
-var map;
- $(function(){
-   $("#submit").click(function(event){
-     event.preventDefault();
-     var information = $("#info").val()
-     console.log(information)
- 
-     var map
-     function initMap() {
-       $.ajax({
-         url:"/resturants_info",
-         method: "GET",
-         dataType: "JSON",
-         success: function(data, success, xhr){
-       map = new google.maps.Map(document.getElementById('map'), {
-       center: {lat: data.region.center.latitude, lng: data.region.center.longitude},
-       zoom: 12
-       });
-           var dat = (data.businesses)
-           // console.log(dat)
-           var places = []
-           for(var i = 0; i<dat.length; i++){
-           // console.log(typeof dat[i].location.coordinate.latitude)
-           // console.log("name is " + dat[i].name +" location is "+ dat[i].location.coordinate.latitude +" "+ dat[i].location.coordinate.longitude)
-           places.push({name: dat[i].name, latitude: dat[i].location.coordinate.latitude, longitude: dat[i].location.coordinate.longitude});
-           // lat.push(dat[i].location.coordinate.longitude);
-           }
-           // console.log(places)
-           for(var i =0; i<places.length; i++){
-             var marker = new google.maps.Marker({
-               position: {lat: places[i].latitude, lng: places[i].longitude},
-               map: map,
-               title: places[i].name
-             });
-             marker.setMap(map)
-           }
-         },
-         error: function(xhr, data, error){
-           console.log("error is "+error);
-         }
-       });
-     }
-     google.maps.event.addDomListener(window, 'load', initMap());
-   })
- })
+$(function(){
+    $("#submit").click(function(event){
+    event.preventDefault()
+    var searchInfo = $('#search').val()
+    // console.log(searchInfo)
+    $.ajax({
+      url:"/locations/"+searchInfo,
+      method: "POST",
+      success: function(data,success,xhr){
+
+      },
+      error: function(xhr, data, error){
+        console.log("error is "+ error)
+      }
+    });
+    })
+   
+
+
+});

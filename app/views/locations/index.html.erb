@@ -12,22 +12,30 @@
   <tbody>
     <!-- <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <div id="map"></div> -->
-  <div id='results'>
-    <div class="row">
-      <div class="col-sm-6 col-md-4">
-       <% @locations.each do |food| %>
-             <div class="thumbnail">
-               <img src=<%= food.img %> alt="food">
-               <div class="caption">
-                 <h3><%= food.name%></h3>
-                  <p><a href=<%= "/locations/#{food.phone}" %> class="btn btn-primary" role="button">View</a> </p>
-               </div>
-         </div>
-       <% end %>
-     </div>
+<div class="row">
+    <div class="col-md-6">
+      <div id='results'>
+        <% @resturants.each do |food| %>
+            <div class="panel panel-default">
+              <div class="panel-heading"><a href=<%= "/resturants/#{food.phone}" %> ><%= food.name%></a></div>
+              <div class="panel-body">
+                <div class='col-md-3'>
+                  <img src=<%= food.img %> alt="food" >
+                </div>
+                <div class='col-md-8'>
+                  <p>Yelp Rating: <%= food.yelpratingicon %></p>
+                  <p>Number of Yelp Reviews: <%= food.yelpreviews %></p>
+                  <p>Food Type: <%= food.foodtype %></p>
+                  <p>Address: <%= food.address %></p>
+                  <p>Phone Number: <%= food.phone %></p>
+                </div>
+              </div>
+            </div>
+        <% end %>
+      </div>
     </div>
-  </div>
-  <div id="map"></div>
+    <div class='col-md-4' id="map">
+    </div>
     <% @locations.each do |location| %>
       <tr>
         <td><%= link_to 'Show', location %></td>
