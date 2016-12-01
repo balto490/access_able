@@ -10,6 +10,8 @@ class CreateLocations < ActiveRecord::Migration[5.0]
       t.boolean :seating
       t.boolean :scooter
       t.text :comment
+      t.string :yelp_id
+      t.integer :user_id
       t.timestamps
     end
   end

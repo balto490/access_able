@@ -1,6 +1,33 @@
-<h1>Editing Location</h1>
+<h1>Write a Review for </h1>
 
-<%= render 'form', location: @location %>
+<%= form_for @location do |f| %>
+		<%= f.label "Accessibility Rating" %>: 
+		<br>
+		<%= f.text_field :rating %>
+		<br>
+		<%= f.label "ramp"%>:
+		<br>
+		<%= f.select(:ramp, options_for_select(["Yes", "No"]), {:prompt => 'Is there a ramp?'}) %>
+		<br>
+		<%= f.label "step" %>:
+		<br>
+		<%= f.select(:step, options_for_select(["Yes", "No"]), {:prompt => 'Are there steps?'})  %>
+		<br>
+		<%= f.label "seating" %>:
+		<br>
+		<%= f.select(:seating, options_for_select(["Yes", "No"]), {:prompt => 'Is there wheelchair accessable seating?'}) %>
+		<br>
+		<%= f.label "scooter" %>:
+		<br>
+		<%= f.select(:scooter, options_for_select(["Yes", "No"]), {:prompt => 'Scooter accessable?'}) %>
+		<br>
+		<%= f.label "comment" %>:
+		<br>
+		<%= f.text_field :comment %>
+		<br>
+		 <%= f.hidden_field :user_id, :value => current_user.id %>
+		
 
-<%= link_to 'Show', @location %> |
+<%= f.submit "Bonzaaiiii" %>
+<% end %>
 <%= link_to 'Back', locations_path %>

@@ -2,50 +2,81 @@
 
 <h1>Locations</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-    <div id="map"></div> -->
-<div class="row">
-    <div class="col-md-6">
-      <div id='results'>
-        <% @resturants.each do |food| %>
-            <div class="panel panel-default">
-              <div class="panel-heading"><a href=<%= "/resturants/#{food.phone}" %> ><%= food.name%></a></div>
-              <div class="panel-body">
-                <div class='col-md-3'>
-                  <img src=<%= food.img %> alt="food" >
-                </div>
-                <div class='col-md-8'>
-                  <p>Yelp Rating: <%= food.yelpratingicon %></p>
-                  <p>Number of Yelp Reviews: <%= food.yelpreviews %></p>
-                  <p>Food Type: <%= food.foodtype %></p>
-                  <p>Address: <%= food.address %></p>
-                  <p>Phone Number: <%= food.phone %></p>
-                </div>
-              </div>
-            </div>
+<div class="form-group top_form search rounded">
+<%= form_tag locations_path, method: :get do %>
+    <%= text_field_tag 'search', nil, :placeholder =>'Search' %>
+     <div id="submit"><%= button_tag"Seach Locations", class: "btn-img" %></div>
+<% end %>
+</div>
+<% @items.each do|item| 
+  next unless item %>
+  <div class="col-md-7" id='yelp_location'>
+    <img src="<%= item[:image] %>"></br>  
+    <strong><%= item[:name] %></strong></br> 
+    <%= item[:rating] %>
+    <img src="<%= item[:rating_img] %>"></br>
+    <%= item[:address] %></br> 
+    <%= item[:phone] %></br>   
+    <a href="<%= item[:url] %>">Visit Yelp Page</a></br> 
+    <%= item[:id] %></br> 
+        <%= form_for @location do |f| %>
+        <%= f.hidden_field :yelp_id, :value => item[:id] %>
+        <%= button_tag "Create Access-Able Review", class: "btn-img" %>
         <% end %>
-      </div>
-    </div>
-    <div class='col-md-4' id="map">
-    </div>
-    <% @locations.each do |location| %>
-      <tr>
-        <td><%= link_to 'Show', location %></td>
-        <td><%= link_to 'Edit', edit_location_path(location) %></td>
-        <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end if @locations %>
-  </tbody>
-</table>
+</div></br>
 
-<br>
 
-<%= link_to 'New Location', new_location_path %>
+<% end %>
+
+<div id="map"></div>
+
+<script type="text/javascript">
+
+var map;
+$(function(){
+  $("#submit").click(function(event){
+    event.preventDefault();
+    var information = $("#info").val()
+    console.log(information)
+
+    var map
+    function initMap() {
+      $.ajax({
+        url:"/locations",
+        method: "GET",
+        dataType: "JSON",
+        success: function(data, success, xhr){
+          map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: data.region.center.latitude, lng: data.region.center.longitude},
+            zoom: 12
+          });
+          var dat = (data.businesses)
+          // console.log(dat)
+          var places = []
+          for(var i = 0; i<dat.length; i++){
+          // console.log(typeof dat[i].location.coordinate.latitude)
+          // console.log("name is " + dat[i].name +" location is "+ dat[i].location.coordinate.latitude +" "+ dat[i].location.coordinate.longitude)
+          places.push({name: dat[i].name, latitude: dat[i].location.coordinate.latitude, longitude: dat[i].location.coordinate.longitude});
+          // lat.push(dat[i].location.coordinate.longitude);
+          }
+          // console.log(places)
+          for(var i =0; i<places.length; i++){
+            var marker = new google.maps.Marker({
+              position: {lat: places[i].latitude, lng: places[i].longitude},
+              map: map,
+              title: places[i].name
+            });
+            marker.setMap(map)
+          }
+        },
+        error: function(xhr, data, error){
+          console.log("error is "+error);
+        }
+      });
+    }
+    google.maps.event.addDomListener(window, 'load', initMap());
+  })
+})
+</script>
+
+
