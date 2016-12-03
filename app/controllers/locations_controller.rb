@@ -57,6 +57,14 @@ class LocationsController < ApplicationController
    @term = params[:search] || ""
    @items = YelpClient.search(@term)
 
+  
+   # @items.each do |item|
+   #    item.latitude,
+     
+   #    item.longitude
+     
+   #  end
+
    # if !user_signed_in?
    #  @user = User.find_by_id(current_user.id)
    #  params[:id] = current_user.id

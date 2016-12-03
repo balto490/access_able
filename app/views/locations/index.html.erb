@@ -10,73 +10,385 @@
 </div>
 <% @items.each do|item| 
   next unless item %>
-  <div class="col-md-7" id='yelp_location'>
-    <img src="<%= item[:image] %>"></br>  
-    <strong><%= item[:name] %></strong></br> 
-    <%= item[:rating] %>
-    <img src="<%= item[:rating_img] %>"></br>
-    <%= item[:address] %></br> 
-    <%= item[:phone] %></br>   
-    <a href="<%= item[:url] %>">Visit Yelp Page</a></br> 
-    <%= item[:id] %></br> 
+  <div id='yelp_location'>
+    <div class="col-md-3">
+        <img src="<%= item[:image] %>"></br> 
+    </div>
+    <div class="col-md-6"> 
+        <strong><%= item[:name] %></strong></br> 
+        <%= item[:rating] %>
+        <img src="<%= item[:rating_img] %>"></br>
+        <%= item[:address] %></br> 
+        <%= item[:phone] %></br> 
+        <a href="<%= item[:url] %>">Visit Yelp Page</a></br> 
+    </div>
+    <div id="create_entry_form">
         <%= form_for @location do |f| %>
         <%= f.hidden_field :yelp_id, :value => item[:id] %>
-        <%= button_tag "Create Access-Able Review", class: "btn-img" %>
-        <% end %>
-</div></br>
-
+    </div>
+        <div id="entry_button"><%= button_tag "Create Access-Able Review", class: "btn-img" %></div>
+    
+ </div></br>
 
 <% end %>
 
-<div id="map"></div>
+
+
+<% end %>
+<div id="map_left">
+    <div class="col-md-5" id="map-canvas"></div>
+</div>
 
 <script type="text/javascript">
 
-var map;
-$(function(){
-  $("#submit").click(function(event){
-    event.preventDefault();
-    var information = $("#info").val()
-    console.log(information)
+$(document).ready(function() {
 
-    var map
-    function initMap() {
-      $.ajax({
-        url:"/locations",
-        method: "GET",
-        dataType: "JSON",
-        success: function(data, success, xhr){
-          map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: data.region.center.latitude, lng: data.region.center.longitude},
-            zoom: 12
-          });
-          var dat = (data.businesses)
-          // console.log(dat)
-          var places = []
-          for(var i = 0; i<dat.length; i++){
-          // console.log(typeof dat[i].location.coordinate.latitude)
-          // console.log("name is " + dat[i].name +" location is "+ dat[i].location.coordinate.latitude +" "+ dat[i].location.coordinate.longitude)
-          places.push({name: dat[i].name, latitude: dat[i].location.coordinate.latitude, longitude: dat[i].location.coordinate.longitude});
-          // lat.push(dat[i].location.coordinate.longitude);
-          }
-          // console.log(places)
-          for(var i =0; i<places.length; i++){
-            var marker = new google.maps.Marker({
-              position: {lat: places[i].latitude, lng: places[i].longitude},
-              map: map,
-              title: places[i].name
-            });
-            marker.setMap(map)
-          }
+    // $(function(window, google){
+
+    // //Map Options
+    //     var options= {
+    //         center: {
+    //             lat: data.region.center.latitude,
+    //             lng: data.region.center.longitude
+    //         },
+    //         zoom: 12
+    //     },
+    //     element = document.getElementById('map-canvas')
+    // //Map
+    //     map = new google.maps.Map(element, options)
+
+
+    // }(window, google));    
+
+    var map;
+    var options= {
+        center: {
+            lat: 40.7,
+            lng: -74
         },
-        error: function(xhr, data, error){
-          console.log("error is "+error);
-        }
-      });
+        zoom: 12,
+        disableDefaultUI: true,
+        scrollwheel: false,
+        maxZoom: 20,
+        minZoom: 5
+        [
+    {
+        "featureType": "all",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#ff0000"
+            }
+        ]
+    },
+    {
+        "featureType": "all",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "color": "#ffffff"
+            }
+        ]
+    },
+    {
+        "featureType": "all",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "color": "#939393"
+            },
+            {
+                "weight": "0.01"
+            },
+            {
+                "lightness": "53"
+            }
+        ]
+    },
+    {
+        "featureType": "all",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            },
+            {
+                "weight": "5.75"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "weight": "0.01"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "weight": "0.01"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "weight": "0.01"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "weight": "0.01"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "weight": "0.01"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "color": "#ffffff"
+            },
+            {
+                "weight": "0.01"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "weight": "1.00"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "color": "#000000"
+            },
+            {
+                "weight": "0.01"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "saturation": "-6"
+            },
+            {
+                "lightness": "100"
+            },
+            {
+                "gamma": "10.00"
+            },
+            {
+                "weight": "0.01"
+            },
+            {
+                "color": "#00539f"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "weight": "0.01"
+            }
+        ]
     }
-    google.maps.event.addDomListener(window, 'load', initMap());
-  })
-})
+]
+
+    };
+
+
+
+
+
+    // google.maps.event.addListener(map.gMap, 'click', function(e) {
+    //     alert('click');
+    //     console.log(e);
+    // });
+    var infowindow;
+    window.initMap = function(){
+        map = new google.maps.Map(document.getElementById('map-canvas'),options);
+
+        // map.addListener('click',function(e){
+        //     console.log(e);
+        // });
+    // for (var b in data){
+    //     var business = data[b];
+    //     var businessLocation = google.maps.LatLng(business.lat,business.lng)
+    //     addMarker(map, business.name, location);
+    // }
+
+    // function addMarker(map, name, business) {  
+
+        <% @items.each do |item| %>
+           var marker = new google.maps.Marker({
+                position: {
+                    lat: <%= item[:latitude] %>,
+                    lng: <%= item[:longitude] %>
+                },
+                map: map,
+                title: "<%= item[:name] %>"
+            });
+           (function(marker){
+                google.maps.event.addListener(marker, 'click', function(){
+                    if (typeof infowindow != 'undefined') infowindow.close();
+                    infowindow = new google.maps.InfoWindow({
+                        content: "<%= item[:name]%>, <%= item[:address]%></br><img src='<%= item[:rating_img] %>'><%= item[:rating] %></br><a href='<%= item[:url] %>'>Visit Yelp Page</a>"
+
+                    });
+                    infowindow.open(map,marker);
+                });
+           })(marker);
+        <% end %>
+
+        // var infowindow = new google.maps.InfoWindow({
+        //     content: business.name
+        // });
+
+        
+    // };
+};
+
+});
+
+function addMyMarker(map){
+    new google.maps.Marker
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//   $("#submit").click(function(event){
+//     event.preventDefault();
+//     var information = $("#info").val()
+//     console.log(information)
+
+//     var map
+//     function initMap() {
+//       $.ajax({
+//         url:"/locations",
+//         method: "GET",
+//         dataType: "JSON",
+//         success: function(data, success, xhr){
+//           map = new google.maps.Map(document.getElementById('map'), {
+//             center: {lat: data.region.center.latitude, lng: data.region.center.longitude},
+//             zoom: 12
+//           });
+//           var dat = (data.businesses)
+//           // console.log(dat)
+//           var places = []
+//           for(var i = 0; i<dat.length; i++){
+//           // console.log(typeof dat[i].location.coordinate.latitude)
+//           // console.log("name is " + dat[i].name +" location is "+ dat[i].location.coordinate.latitude +" "+ dat[i].location.coordinate.longitude)
+//           places.push({name: dat[i].name, latitude: dat[i].location.coordinate.latitude, longitude: dat[i].location.coordinate.longitude});
+//           // lat.push(dat[i].location.coordinate.longitude);
+//           }
+//           // console.log(places)
+//           for(var i =0; i<places.length; i++){
+//             var marker = new google.maps.Marker({
+//               position: {lat: places[i].latitude, lng: places[i].longitude},
+//               map: map,
+//               title: places[i].name
+//             });
+//             marker.setMap(map)
+//           }
+//         },
+//         error: function(xhr, data, error){
+//           console.log("error is "+error);
+//         }
+//       });
+//     }
+//     google.maps.event.addDomListener(window, 'load', initMap());
+//   })
+// });
+
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDa7ny9GaTtPEURdR3q170JVN9IupQdVsY&callback=initMap"
+    async defer></script>
 
 

@@ -2,8 +2,8 @@
 <div class="col-md-8" id="business_title_header">
   <img id="business_image" src="<%= @item.image_url %>">
   <h3 id="business_title"><%= @item.name %></h3>
-  <%= @item.categories %>
-  <%= @item.location.address.join(', ') %>
+  <%= @item.categories[0][0] %></br>
+  <%= @item.location.display_address.join(', ') %>
   <div id="rating_div">
   	<img id="rating_image" src="<%= @item.rating_img_url %>">
   	<%= @item.review_count %> reviews

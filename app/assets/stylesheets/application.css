@@ -17,27 +17,55 @@
  body {
  	margin: 0;
  	margin-top: 0;
- 	font-family: 'Varela Round', sans-serif;
+ 	font-family: 'Roboto', sans-serif;
  	background-color: #02C39A;
  }
 
- #logo {
- 	position: absolute;
- 	color: white;
- 	left: 50px;
- }
 
-#navbar {
-	background-color: #028090;
-	list-style-type: none;
-	height: 70px;
-	color: #F0F3BD;
-	/*webkit-box-shadow: 0 8px 6px -6px #999;
-    moz-box-shadow: 0 8px 6px -6px #999;
-    box-shadow: 0 8px 6px -6px #999;*/
+#logo {
+	font-family: 'Knewave', cursive;
+
+}
+
+#able {
+	position: fixed;
+	left: 66px;
+	top: -20px;
+	color: white;
+	font-size: 50px;
+	z-index: 6;
 }
 
 
+
+#NYC {
+	color: yellow;
+	position: fixed;
+	left: 160px;
+	top: 25px;
+	color: yellow;
+	font-size: 20px;
+	z-index: 6;
+}
+
+#navbar {
+	background-color: #197BBD;
+	list-style-type: none;
+	height: 60px;
+	color: #197BBD;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	/*webkit-box-shadow: 0 8px 6px -6px #999;
+    moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;*/
+    z-index: 5;
+}
+
+#navbar ul {
+	margin: 0;
+	margin-left: 70%;
+}
 
 #navbar ul li {
 	display: inline-block;
@@ -49,11 +77,41 @@
     padding-left: 10px;
     font-size: 20px;
     color: #F0F3BD;
+    z-index: 5;
 }
 
-ul {
-	margin: 0;
-	margin-left: 70%;
+#welcomeuser {
+	padding-top: 10px;
+}
+
+#yelp_location {
+	width: 40%;
+	border-bottom: 1px solid grey;
+	position: relative;
+}
+
+#create_entry_form {
+	padding-top: 5px;
+	position: relative;
+
+}
+
+#entry_button {
+	position: relative;
+	left: 58%;
+	top: -60px;
+	width: 200px;
+}
+
+#map-canvas {
+	width: 800px;
+	height: 640px;
+}
+
+#map_left {
+	position: fixed;
+	top: 0;
+	left: 40%;
 }
 
 /*#navbar ul li:hover {
@@ -76,4 +134,5 @@ ul {
 	background-color: #35FF69;
 	border: 5px solid #35FF69;
 }*/
+
 

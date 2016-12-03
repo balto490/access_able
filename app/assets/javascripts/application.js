@@ -14,33 +14,3 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
-// var mapOptions = {
-//     center: new google.maps.LatLng(37.7831,-122.4039),
-//     zoom: 12,
-//     mapTypeId: google.maps.MapTypeId.ROADMAP
-// };
-
-// new google.maps.Map(document.getElementById('map'), mapOptions);
-
-
-$(function(){
-    $("#submit").click(function(event){
-    event.preventDefault()
-    var searchInfo = $('#search').val()
-    // console.log(searchInfo)
-    $.ajax({
-      url:"/locations/"+searchInfo,
-      method: "POST",
-      success: function(data,success,xhr){
-
-      },
-      error: function(xhr, data, error){
-        console.log("error is "+ error)
-      }
-    });
-    })
-   
-
-
-});

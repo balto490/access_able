@@ -1,9 +1,10 @@
 
-<h1>Locations</h1>
 
-<div class="form-group top_form search rounded">
-<%= form_tag locations_path, method: :get do %>
-    <%= text_field_tag 'search', nil, :placeholder =>'Search' %>
-<%= button_tag "Seach Locations", class: "btn-img" %>
-<% end %>
+<img id="blue_map_welcome" src="/assets/blue_map_welcome.png">
+<div id="welcome_search">
+	<h1 id="location_title">Search Recently Visited Locations:</h1>
+	<%= form_tag locations_path, method: :get do %>
+    	<%= text_field_tag 'search', nil, :placeholder =>'Search' %>
+		<%= button_tag "Seach Locations", class: "btn-img" %>
+	<% end %>
 </div>
