@@ -1,7 +1,10 @@
-<h1>Write a Review for </h1>
+<img id="blue_map_welcome" src="/assets/blue_map_welcome.png">
 
+<h1 id="review_title">Write a Review for <%= @item.name %></h1>
+
+<div id="able_form" class="col-md-6">
 <%= form_for @location do |f| %>
-		<%= f.label "Accessibility Rating" %>: 
+		<%= f.label "Accessibility Rating (1-10)" %>: 
 		<br>
 		<%= f.text_field :rating %>
 		<br>
@@ -26,8 +29,18 @@
 		<%= f.text_field :comment %>
 		<br>
 		 <%= f.hidden_field :user_id, :value => current_user.id %>
-		
-
-<%= f.submit "Bonzaaiiii" %>
+<%= f.submit "Submit Review" %>
 <% end %>
 <%= link_to 'Back', locations_path %>
+</div>
+
+<div id="edit_page_description" class="col-md-6">
+	<img id="business_image" src="<%= @item.image_url %>">
+  	<h3 id="business_title"><%= @item.name %></h3>
+  	<h5><%= @item.categories[0][0] %></h5>
+  	<%= @item.location.display_address.join(', ') %>
+  	<div id="rating_div">
+  	<img id="rating_image" src="<%= @item.rating_img_url %>">
+  	<%= @item.review_count %> reviews </br>
+  	<a href="<%= @item.url %>">Visit Yelp Page</a></br> 
+</div>

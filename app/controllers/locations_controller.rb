@@ -96,6 +96,8 @@ class LocationsController < ApplicationController
   # GET /locations/1/edit
   def edit
     @location = Location.find(params[:id])
+    @term = @location.yelp_id
+    @item = YelpClient.cbsearch(@term)
   end
 
   # POST /locations

@@ -18,7 +18,7 @@
  	margin: 0;
  	margin-top: 0;
  	font-family: 'Roboto', sans-serif;
- 	background-color: #02C39A;
+ 	background-color: #E0E0E0;
  }
 
 
@@ -114,6 +114,112 @@
 	left: 40%;
 }
 
+
+/*Edit Page*/
+
+#edit_page_description {
+	border-radius: 10px;
+	border: 1px solid yellow;
+	width: 400px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	background-color: #197BBD;
+	left: 100px;
+	box-shadow: 2px 2px 1px grey;
+}
+
+#able_form {
+	left: 50px;
+}
+
+#review_title {
+	color: white;
+	margin-left: 40px;
+	padding-top: 50px;
+	padding-bottom: 30px;
+}
+
+#business_title_header {
+	position: absolute;
+	color: white;
+	left: 20%;
+	top: 200px;
+}
+
+#business_image_show {
+	border-radius: 10px;
+	position: absolute;
+	width: 150px;
+	border: 3px solid yellow;
+	left: 5%;
+	top: 150px;
+}
+
+#able_rating_show {
+	position: absolute;
+	left: 80%;
+	font-size: 35px;
+	color: white;
+	border-radius: 10px;
+	border: 3px solid yellow;
+	padding: 10px;
+	top: 190px;
+}
+
+#rating_description {
+	font-size: 20px !important;
+}
+
+#able_review_show {
+	position: relative;
+	top: 270px;
+	border-radius: 5px;
+	background-color: #E0E0E0;
+	left: 5%;
+	box-shadow: 1px 1px 1px grey;
+}
+
+#able_review_show ul li {
+	list-style: none;
+	padding: 3px;
+	padding-top: 8px !important;
+}
+
+#wheelchair_icon_show {
+	width: 30px;
+}
+
+#scooter_icon_show {
+	width: 30px;
+}
+
+#ramp_icon_show {
+	width: 30px;
+}
+
+#stairs_icon_show {
+	width: 30px;
+}
+
+#comment_show {
+	padding-bottom: 10px;
+}
+
+#business_info_show {
+	top: 270px;
+	box-shadow: 1px 1px 1px grey;
+	border-radius: 5px;
+	left: 80px;
+	background-color: #E0E0E0;
+	width: 300px;
+
+}
+
+#map_show {
+	width: 300px;
+	top: 900px;
+	position: absolute;
+}
 /*#navbar ul li:hover {
     background-color: #00A896;
 }*/

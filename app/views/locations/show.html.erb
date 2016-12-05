@@ -1,14 +1,107 @@
+<img id="blue_map_welcome" src="/assets/blue_map_welcome.png">
 
-<div class="col-md-8" id="business_title_header">
-  <img id="business_image" src="<%= @item.image_url %>">
-  <h3 id="business_title"><%= @item.name %></h3>
-  <%= @item.categories[0][0] %></br>
-  <%= @item.location.display_address.join(', ') %>
-  <div id="rating_div">
-  	<img id="rating_image" src="<%= @item.rating_img_url %>">
-  	<%= @item.review_count %> reviews
-  </div>
 
+<img id="business_image_show" src="<%= @item.image_url %>">
+
+
+<div class="col-md-6" id="business_title_header">
+  	<h3 id="business_title"><%= @item.name %></h3>
+  	<%= @item.categories[0][0] %></br>
+  	<%= @item.location.display_address.join(', ') %>
+  	<div id="rating_div">
+  		<img id="rating_image" src="<%= @item.rating_img_url %>">
+  		<%= @item.review_count %> reviews
+	</div>
 </div></br>
+
+<div id="able_rating_show">
+	<%= @location.rating %>/10</br>
+	<div id="rating_description">Good</div>
+</div>
+
+<div>
+<div class="col-md-8" id="able_review_show">
+	<h3>Accessability Information</h3>
+	<div class="col-md-6">
+		<ul>
+			<li><img id="wheelchair_icon_show" src="/assets/wheelchair.png">Wheelchair Accessible Seating: <%= @location.seating %></li>
+			<li><img id="scooter_icon_show" src="/assets/scooter.png">Scooter Accessible: <%= @location.scooter %></li>
+		</ul>
+	</div>
+	<div class="col-md-6">
+		<ul>
+			<li><img id="ramp_icon_show" src="/assets/ramp.png">Handicap Ramp: <%= @location.ramp %></li>
+			<li><img id="stairs_icon_show" src="/assets/stairs.png">Step: <%= @location.step %></li>
+		</ul>
+	</div>
+	<div class="col-md-12" id="comment_show">
+		<h4>Review</h4><%= @location.comment %>
+	</div>
+</div>
+<div class="col-md-4" id="business_info_show">
+		<div id="map_show"></div>
+		<ul>
+			<li>Hours</li>
+			<li>Phone</li>
+			<li>Price</li>
+			<li>Website</li>
+		</ul>
+</div>
+</div>
+
+
+<script type="text/javascript">
+
+$(document).ready(function() {    
+
+    var map;
+    var options= {
+        center: {
+            lat: 40.7,
+            lng: -74
+        },
+        zoom: 12,
+        disableDefaultUI: true,
+        scrollwheel: false,
+        maxZoom: 20,
+        minZoom: 5
+
+    };
+
+
+    var infowindow;
+    window.initMap = function(){
+        map = new google.maps.Map(document.getElementById('map_show'),options);
+
+        // map.addListener('click',function(e){
+        //     console.log(e);
+        // });
+    // for (var b in data){
+    //     var business = data[b];
+    //     var businessLocation = google.maps.LatLng(business.lat,business.lng)
+    //     addMarker(map, business.name, location);
+    // }
+
+    // function addMarker(map, name, business) {  
+
+     
+           var marker = new google.maps.Marker({
+                position: {
+                    lat: <%= @item.location.coordinate.latitude %>,
+                    lng: <%= @item.location.coordinate.longitude %>
+                },
+                map: map,
+                title: "<%= @item.name %>"
+            });
+           
+
+};
+
+});
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDa7ny9GaTtPEURdR3q170JVN9IupQdVsY&callback=initMap"
+    async defer></script>
+
 
 
