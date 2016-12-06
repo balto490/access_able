@@ -15,6 +15,7 @@
 </div></br>
 
 <div id="able_rating_show">
+	<h6>Able Rating:</h6>
 	<%= @location.rating %>/10</br>
 	<div id="rating_description">
 		<% if @location.rating == 0 %>
@@ -28,6 +29,23 @@
 		<%else%> 
 			<h6>Excellent</h6>
 		<%end%>
+	</div>
+</div>
+	<div id="review_rating_show">
+		<h6>Review Accuracy </br>Rating</h6>
+		<%= @rating %>/5</br>
+	<div id="rating_review_description">
+	<% if !@comments.nil? %>
+		<% if @rating == 1 %>
+			<h6>Not Reliable</h6>
+		<% elsif @rating == 2 || @rating == 3 %>
+			<h6>Pretty Reliable</h6>
+		<% elsif @rating == 4 %>
+			<h6>Reliable</h6>
+		<%else%> 
+			<h6>Very Reliable</h6>
+		<%end%>
+	<% end %>
 	</div>
 </div>
 
@@ -52,7 +70,6 @@
 </div>
 <div class="col-md-4" id="business_info_show">
 	<h4>Business Information</h4>
-		<div id="map_show"></div>
 		<ul>
 			<li><strong>Hours:</strong> <%= @item.is_closed %></li>
 			<li><strong>Phone:</strong> <%= @item.display_phone %></li>
@@ -60,9 +77,37 @@
 			<li><strong>Cross Streets:</strong> </li><%= @item.location.cross_streets %></li>
 			<li><strong><a href="<%= @item.url %>">Visit Yelp Page</a></strong></li>
 		</ul>
+		<div id="map_show"></div>
 </div>
 </div>
 
+<div id="comment_form" class="col-md-8" class="pure-form pure-form-aligned">
+<h3>Add a Comment and Review Accuracy Rating Below:</h3>
+<%= form_for :comment do |f| %>
+	<div class="pure-control-group">
+		<%= f.label "Review Comment" %>:</br>
+		<%= f.text_area :user_comment, :rows => "5", :cols => "50" %>
+	</div>
+	<div class="pure-control-group">
+		<%= f.label "Review Accuracy Rating" %>:
+		<%= f.text_field :user_rating, :size => 3 %>
+	</div>
+
+	<div class="pure-control-group">
+		<%= f.hidden_field :user_id, :value => current_user.id %>
+		<%= f.hidden_field :location_id, :value => params[:id] %>
+		<%= f.submit "Submit Review Comment", class: "button button-rounded button-flat-primary" %>
+	</div>
+<% end %>
+
+<% @comments.reverse.each do|c| %>
+	<div class="col-lg-6" id="user_reviews_index">
+		<p><%= c.user_comment %></p>
+		<h6>Review accuracy rating: <strong><%= c.user_rating %></strong>
+		<h6>By: <%= c.user.username %></h6>
+	</div>
+<%end%>
+</div>
 
 <script type="text/javascript">
 
@@ -71,8 +116,8 @@ $(document).ready(function() {
     var map;
     var options= {
         center: {
-            lat: 40.7,
-            lng: -74
+            lat: <%= @item.location.coordinate.latitude %>,
+            lng: <%= @item.location.coordinate.longitude %>
         },
         zoom: 12,
         disableDefaultUI: true,

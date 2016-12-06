@@ -85,28 +85,41 @@ class LocationsController < ApplicationController
     @location = Location.find(params[:id])
     @term = @location.yelp_id
     @item = YelpClient.cbsearch(@term)
+    @comment = Comment.new
+    @comments = Comment.where(location_id: params[:id])
+    @count = @comments.count
+    @location_rating = @comments.map do |c| 
+      c.user_rating
+    end.reduce &:+
     
-
-  end
+    if @comments.nil?
+      @rating = @location_rating/@count
+    end
+end
 
   # GET /locations/new
   def new
     @location = Location.new
-
   end
 
   # GET /locations/1/edit
   def edit
+    # p "Found edit... for #{params[:id]}"
     @location = Location.find(params[:id])
+    p "params are... #{params[:yelp_id]}"
+    p "Found Location... #{@location}"
     @term = @location.yelp_id
+    p "term is... #{@term}"
     @item = YelpClient.cbsearch(@term)
+
+  
   end
 
   # POST /locations
   # POST /locations.json
   def create
-    @user = User.find_by_id(current_user.id)
-    @location = Location.create(location_params.merge(user_id: current_user.id))
+    @user_id = current_user.id
+    @location = Location.create(location_params.merge(user_id: @user_id))
 
     respond_to do |format|
       if @location
@@ -154,4 +167,6 @@ class LocationsController < ApplicationController
     def location_params
       params.require(:location).permit(:category, :rating, :ramp, :step, :seating, :scooter, :comment, :user_id, :yelp_id)
     end
+
+
 end

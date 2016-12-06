@@ -33,7 +33,9 @@ def self.search(term)
 end
 
 def self.cbsearch(term)
+	p "term: #{term}"
 	response = @client.business(term)
+	p "response: #{response}"
 	data = response.business 
 end
 

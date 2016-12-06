@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/show' => 'welcome#show'
 
   get '/locations/info', to: 'locations#info'
-  post '/locations' => 'locations#create'
+  post '/locations/:id' => 'comments#create'
 
   
   put '/locations/:id/edit' => 'locations#update'
