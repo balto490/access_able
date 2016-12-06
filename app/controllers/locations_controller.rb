@@ -76,6 +76,8 @@ class LocationsController < ApplicationController
    # p @locations
   end
 
+
+
   # GET /locations/1
   # GET /locations/1.json
   def show
@@ -108,7 +110,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location
-        format.html { redirect_to edit_location_path(@location.id), notice: 'Location was successfully created.' }
+        format.html { redirect_to edit_location_path(@location.id) }
         format.json { render :show, status: :created, location: @location }
       else
         format.html { render :new }
@@ -123,7 +125,7 @@ class LocationsController < ApplicationController
     @location = Location.find(params[:id])
     respond_to do |format|
       if @location.update(location_params)
-        format.html { redirect_to location_path(@location.id), notice: 'Location was successfully updated.' }
+        format.html { redirect_to location_path(@location.id) }
         format.json { render :show, status: :ok, location: @location }
       else
         format.html { render :edit }

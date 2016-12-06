@@ -1,37 +1,42 @@
 <img id="blue_map_welcome" src="/assets/blue_map_welcome.png">
 
+<div class="pure-form pure-form-aligned">
 <h1 id="review_title">Write a Review for <%= @item.name %></h1>
 
-<div id="able_form" class="col-md-6">
+<div id="able_form" class="col-md-6" class="pure-form pure-form-aligned">
 <%= form_for @location do |f| %>
+	<div class="pure-control-group">
 		<%= f.label "Accessibility Rating (1-10)" %>: 
-		<br>
-		<%= f.text_field :rating %>
-		<br>
+		<%= f.text_field :rating, :size => 3 %>
+	</div>
+	<div class="pure-control-group">	
 		<%= f.label "ramp"%>:
-		<br>
 		<%= f.select(:ramp, options_for_select(["Yes", "No"]), {:prompt => 'Is there a ramp?'}) %>
-		<br>
+	</div>
+	<div class="pure-control-group">
 		<%= f.label "step" %>:
-		<br>
 		<%= f.select(:step, options_for_select(["Yes", "No"]), {:prompt => 'Are there steps?'})  %>
-		<br>
+	</div>
+	<div class="pure-control-group">
 		<%= f.label "seating" %>:
-		<br>
 		<%= f.select(:seating, options_for_select(["Yes", "No"]), {:prompt => 'Is there wheelchair accessable seating?'}) %>
-		<br>
+	</div>
+	<div class="pure-control-group">
 		<%= f.label "scooter" %>:
-		<br>
 		<%= f.select(:scooter, options_for_select(["Yes", "No"]), {:prompt => 'Scooter accessable?'}) %>
-		<br>
+	<div class="pure-control-group">
 		<%= f.label "comment" %>:
-		<br>
-		<%= f.text_field :comment %>
-		<br>
-		 <%= f.hidden_field :user_id, :value => current_user.id %>
-<%= f.submit "Submit Review" %>
-<% end %>
-<%= link_to 'Back', locations_path %>
+		<%= f.text_area :comment, :rows => "5", :cols => "50" %>
+	</div>
+	<div class="pure-control-group">
+		<%= f.hidden_field :user_id, :value => current_user.id %>
+		<%= f.submit "Submit Review", class: "button button-rounded button-flat-primary" %>
+		<% end %>
+	</div>	
+		<%= link_to 'Back', locations_path %>
+		
+
+</div>
 </div>
 
 <div id="edit_page_description" class="col-md-6">

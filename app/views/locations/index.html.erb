@@ -1,13 +1,20 @@
+
+<img id="blue_map_locations" src="/assets/blue_map_welcome.png">
+
 <p id="notice"><%= notice %></p>
-
-<h1>Locations</h1>
-
-<div class="form-group top_form search rounded">
+<div id="location_titles">
+    <h1>Locations</h1>
+    <h4>Search by Name, Category or Address</h4>
+</div>
+<div class="form-group top_form search rounded" id="location_search">
 <%= form_tag locations_path, method: :get do %>
-    <%= text_field_tag 'search', nil, :placeholder =>'Search' %>
-     <div id="submit"><%= button_tag"Seach Locations", class: "btn-img" %></div>
+    <ul>
+        <li><%= text_field_tag 'search', nil, :placeholder =>'Search' %></li>
+        <li id="submit"><%= button_tag"Seach Locations", class: "btn-img" %></li>
+    <ul>
 <% end %>
 </div>
+<div id="yelp_location_all">
 <% @items.each do|item| 
   next unless item %>
   <div id='yelp_location'>
@@ -17,7 +24,7 @@
     <div class="col-md-6"> 
         <strong><%= item[:name] %></strong></br> 
         <%= item[:rating] %>
-        <img src="<%= item[:rating_img] %>"></br>
+        <img src="<%= item[:rating_img] %>"><%= item[:review_count] %> reviews</br>
         <%= item[:address] %></br> 
         <%= item[:phone] %></br> 
         <a href="<%= item[:url] %>">Visit Yelp Page</a></br> 
@@ -26,12 +33,12 @@
         <%= form_for @location do |f| %>
         <%= f.hidden_field :yelp_id, :value => item[:id] %>
     </div>
-        <div id="entry_button"><%= button_tag "Create Access-Able Review", class: "btn-img" %></div>
+        <div id="entry_button"><%= button_tag "Create Able Review", class: "button button-rounded button-flat-primary" %></div>
     
  </div></br>
-
 <% end %>
 <% end %>
+</div>
 
 <div id="map_left">
     <div class="col-md-5" id="map-canvas"></div>

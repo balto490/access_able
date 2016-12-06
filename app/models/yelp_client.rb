@@ -25,7 +25,8 @@ def self.search(term)
 		rating_img: b.rating_img_url,
 		id: b.id,
 		latitude: b.location.coordinate.latitude,
-		longitude: b.location.coordinate.longitude
+		longitude: b.location.coordinate.longitude,
+		review_count: b.review_count
 
 	}
 	end

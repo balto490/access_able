@@ -11,8 +11,11 @@ Rails.application.routes.draw do
 
 
   get '/' => 'welcome#index'
+  get '/show' => 'welcome#show'
+
   get '/locations/info', to: 'locations#info'
   post '/locations' => 'locations#create'
+
   
   put '/locations/:id/edit' => 'locations#update'
   patch '/locations/:id/edit' => 'locations#update'

@@ -23,36 +23,41 @@
    <!--  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
   	</head>
-    <div id="logo">
+    <a href="/"><div id="logo">
       <h1 id="able">Able</h1>
       <h4 id="NYC">NYC</h4>
-    </div>
+    </div></a>
     <% if user_signed_in? %>
+      <div id="signed_in_buttons">
+        <div id="my_profile_button" class="button button-rounded button-flat-primary"><%= link_to "MyProfile" %></div>
+        <div id="sign_out_button" class="button button-rounded button-flat-primary"><%= link_to "SignOut",destroy_user_session_path, method: :delete %></div>
+      </div>
      		<div id="navbar">
       			<div id="welcomeuser">
       				<ul>
  		     			   <span>Welcome, <%= current_user.username.capitalize %>!</span>
-                 <li id="my_profile_button" class="button button-rounded button-flat-primary"><%= link_to "MyProfile" %></li>
-                 <li id="sign_out_button" class="button button-rounded button-flat-primary"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
  		    		  </ul>
  	  			</div>
  	 		</div>
  	<% else %>
- 	  <div id="navbar">
-    <div id="welcomeuser">
- 	  	<ul>
- 	  		<li><a href="/users/sign_in" class="button button-rounded button-flat-primary">Login</a></li>
- 	  		<span class="button-dropdown" data-buttons="dropdown">
-  				<a href="#" class="button button-rounded button-flat-primary">Sign Up <i class="fa fa-caret-down"></i></a>
-  				<ul class="button-dropdown-menu-below">
-    				<li><a href="/users/auth/twitter">Twitter Signup</a></li>
-    				<li><a href="/users/auth/facebook">Facebook Signup</a></li>
-    				<li class="button-dropdown-divider"><a href="/users/sign_up">Email Signup</a></li>
-  				</ul>
-			</span>
- 	  	</ul>
+    <div id="signed_out_buttons">
+        <div id="welcomeuser">
+        <ul>
+        <li id="login_button"><a href="/users/sign_in" class="button button-rounded button-flat-primary">Login</a></li>
+        <li id="sign_up_button"><span class="button-dropdown" data-buttons="dropdown">
+          <a href="#" class="button button-rounded button-flat-primary">Sign Up <i class="fa fa-caret-down"></i></a>
+            <ul class="button-dropdown-menu-below">
+              <li><a href="/users/auth/twitter">Twitter Signup</a></li>
+              <li><a href="/users/auth/facebook">Facebook Signup</a></li>
+              <li class="button-dropdown-divider"><a href="/users/sign_up">Email Signup</a></li>
+            </ul>
+        </span></li>
+      </ul>
     </div>
- 	  </div>
+    </div>
+    </div>
+ 	  <div id="navbar">
+    </div>
  	<% end %>
  	<p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

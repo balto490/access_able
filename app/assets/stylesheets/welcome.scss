@@ -25,7 +25,38 @@
 
 }
 
+#location_list {
+	margin-top: 300px;
+}
+
+#location_title_list {
+	padding-left: 50px;
+}
+
 #welcome_search {
 	text-align: center;
 	padding-top: 80px;
+}
+
+#rated_location_list {
+	width: 500px;
+	box-shadow: 1px 1px 1px grey;
+	border-radius: 5px;
+	left: 80px;
+	background-color: #E0E0E0;
+	margin-left: 5%;
+
+}
+
+#able_rating_show_list {
+	margin-left: 50px;
+ 	font-size: 30px;
+	border: 3px solid yellow;
+	width: 85px;	
+	padding: 10px;
+	border-radius: 5px;
+}
+
+#rating_description_list {
+	font-size: 30px;
 }

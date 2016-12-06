@@ -16,7 +16,19 @@
 
 <div id="able_rating_show">
 	<%= @location.rating %>/10</br>
-	<div id="rating_description">Good</div>
+	<div id="rating_description">
+		<% if @location.rating == 0 %>
+			<h6>Not Accessable</h6>
+		<% elsif @location.rating >= 0 && @location.rating <= 4 %>
+			<h6>Poor</h6>
+		<% elsif @location.rating >= 5 && @location.rating <= 7 %>
+			<h6>Average</h6>
+		<% elsif @location.rating >= 8 && @location.rating <= 9 %>
+			<h6>Great</h6>
+		<%else%> 
+			<h6>Excellent</h6>
+		<%end%>
+	</div>
 </div>
 
 <div>
@@ -24,14 +36,14 @@
 	<h3>Accessability Information</h3>
 	<div class="col-md-6">
 		<ul>
-			<li><img id="wheelchair_icon_show" src="/assets/wheelchair.png">Wheelchair Accessible Seating: <%= @location.seating %></li>
-			<li><img id="scooter_icon_show" src="/assets/scooter.png">Scooter Accessible: <%= @location.scooter %></li>
+			<li><img id="wheelchair_icon_show" src="/assets/wheelchair.png"> Wheelchair Accessible Seating:  <%= @location.seating %></li>
+			<li><img id="scooter_icon_show" src="/assets/scooter.png"> Scooter Accessible:  <%= @location.scooter %></li>
 		</ul>
 	</div>
 	<div class="col-md-6">
 		<ul>
-			<li><img id="ramp_icon_show" src="/assets/ramp.png">Handicap Ramp: <%= @location.ramp %></li>
-			<li><img id="stairs_icon_show" src="/assets/stairs.png">Step: <%= @location.step %></li>
+			<li><img id="ramp_icon_show" src="/assets/ramp.png"> Handicap Ramp: <%= @location.ramp %></li>
+			<li><img id="stairs_icon_show" src="/assets/stairs.png"> Step: <%= @location.step %></li>
 		</ul>
 	</div>
 	<div class="col-md-12" id="comment_show">
@@ -39,12 +51,14 @@
 	</div>
 </div>
 <div class="col-md-4" id="business_info_show">
+	<h4>Business Information</h4>
 		<div id="map_show"></div>
 		<ul>
-			<li>Hours</li>
-			<li>Phone</li>
-			<li>Price</li>
-			<li>Website</li>
+			<li><strong>Hours:</strong> <%= @item.is_closed %></li>
+			<li><strong>Phone:</strong> <%= @item.display_phone %></li>
+			<li><strong>Price:</strong> </li>
+			<li><strong>Cross Streets:</strong> </li><%= @item.location.cross_streets %></li>
+			<li><strong><a href="<%= @item.url %>">Visit Yelp Page</a></strong></li>
 		</ul>
 </div>
 </div>

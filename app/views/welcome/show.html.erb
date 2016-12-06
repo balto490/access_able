@@ -1,0 +1,26 @@
+<img id="blue_map_welcome" src="/assets/blue_map_welcome.png">
+
+<div id="location_list">
+<% @location.each do |location| unless location.rating == nil || location.ramp == nil || location.seating == nil || location.step == nil || location.comment == nil %>
+	<div id="rated_location_list">
+		<h1 id="location_title_list"><a href="/locations/<%= location.id %>"><%=location.yelp_id.gsub!(/-/, ' ').titleize %></a></h1>
+		<div id="able_rating_show_list">
+			<strong><%= location.rating %>/10</strong></br>
+			<div id="rating_description_list">
+			<% if location.rating == 0 %>
+				<h6>Not Accessable</h6>
+			<% elsif location.rating >= 0 && location.rating <= 4 %>
+				<h6>Poor</h6>
+			<% elsif location.rating >= 5 && location.rating <= 7 %>
+				<h6>Average</h6>
+			<% elsif location.rating >= 8 && location.rating <= 9 %>
+				<h6>Great</h6>
+			<%else%> 
+				<h6>Excellent</h6>
+			<%end%>
+			</div>
+		</div>
+	</div>
+</div>
+	<%end%>
+<%end%>

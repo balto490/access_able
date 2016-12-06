@@ -1,36 +1,46 @@
-<h2>Sign up</h2>
+<img id="blue_map_welcome" src="/assets/blue_map_welcome.png">
+
+<div id="sign_up_form" class="pure-form pure-form-aligned">
+<h2>Create an Able Accout</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :username %><br />
+<div class="pure-control-group">
+    <%= f.label :username %>
     <%= f.text_field :username, autofocus: true %>
-    <%= f.label :dob %><br />
+</div>
+<div class="pure-control-group">
+    <%= f.label :dob %>
     <%= f.text_field :dob, autofocus: true %>
-    <%= f.label :location %><br />
+</div>
+<div class="pure-control-group">
+    <%= f.label :location %>
     <%= f.text_field :location, autofocus: true %>
-    <%= f.label :email %><br />
+</div>
+<div class="pure-control-group">
+    <%= f.label :email %>
     <%= f.email_field :email, autofocus: true %>
-  </div>
+</div>
 
   <% if f.object.password_required? %>
-  <div class="field">
+<div class="pure-control-group">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+    <% end %>
     <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+</div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
+<div class="pure-control-group">
+    <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+</div>
   <% end %>
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="actions" class="pure-control-group">
+    <%= f.submit "Sign up", class: "button button-rounded button-flat-primary", class: "submit-form-button" %>
   </div>
+  <%= render "users/shared/links" %>
 <% end %>
 
-<%= render "users/shared/links" %>
+
+</div>

@@ -21,6 +21,8 @@
  	background-color: #E0E0E0;
  }
 
+ /*Nav Bar Stlying*/
+
 
 #logo {
 	font-family: 'Knewave', cursive;
@@ -60,6 +62,7 @@
     moz-box-shadow: 0 8px 6px -6px #999;
     box-shadow: 0 8px 6px -6px #999;*/
     z-index: 5;
+    opacity: 0.7;
 }
 
 #navbar ul {
@@ -80,14 +83,115 @@
     z-index: 5;
 }
 
-#welcomeuser {
+
+/*Button Stlying*/
+
+#signed_in_buttons {
+	z-index: 6;
+	position: fixed;
+	cursor: pointer;
+}
+
+#login_button {
+	z-index: 6;
+	position: fixed;
+	cursor: pointer;
+	opacity: 1;
+}
+
+#sign_out_button {
+	position: absolute !important;
+	left: 1100px;
+	top: 4px;
+	opacity: 1 !important;
+	background-color: yellow;
+
+
+}
+
+#my_profile_button {
+	position: absolute;
+	left: 980px;
+	top: 4px;
+}
+
+#signed_out_buttons li {
+	list-style-type: none;
+	padding-top: 3px;
+}
+
+#login_button {
+	left: 1000px;
+}
+
+#sign_up_button {
+	position: fixed;
+	left: 1100px;
+	z-index: 6;
+}
+
+/*Sign Up Page*/
+
+#sign_up_form {
+	border: 1px solid black;
+	width: 450px;
+	border-radius: 5px;
+	padding-left: 45px;
+	margin-top: 40px;
+	padding-bottom: 20px;
+	margin-left: 33%;
+	background-color: #197BBD;
+	opacity: .98;
+	box-shadow: 2px 2px 1px grey;
+}
+
+/*Sign In Page*/
+
+#login_form {
+	border: 1px solid black;
+	width: 300px;
+	border-radius: 5px;
+	padding-left: 67px;
+	margin-top: 40px;
+	padding-bottom: 20px;
+	margin-left: 37%;
+	background-color: #197BBD;
+	opacity: .98;
+	box-shadow: 2px 2px 1px grey;
+}
+
+/*Search Page*/
+
+#blue_map_locations {
+	width: 45%;
+	position: absolute;
+	top: -100px;
+	z-index: -1;
+}
+
+#location_titles {
+	margin-left: 60px;
 	padding-top: 10px;
+	color: white;
+}
+
+#location_titles h4 {
+	color: yellow;
+}
+
+#location_search li{
+	display: inline-block;
+	margin-left: 10px;
 }
 
 #yelp_location {
 	width: 40%;
 	border-bottom: 1px solid grey;
 	position: relative;
+}
+
+#yelp_location_all {
+	margin-top: 60px;
 }
 
 #create_entry_form {
@@ -98,7 +202,7 @@
 
 #entry_button {
 	position: relative;
-	left: 58%;
+	left: 65%;
 	top: -60px;
 	width: 200px;
 }
@@ -124,18 +228,29 @@
 	padding-top: 50px;
 	padding-bottom: 50px;
 	background-color: #197BBD;
-	left: 100px;
+	left: 150px;
+	padding-left: 50px;
 	box-shadow: 2px 2px 1px grey;
+}
+
+#edit_page_description a {
+	color: yellow;
 }
 
 #able_form {
 	left: 50px;
+	margin-top: 120px;
+	border: 1px solid black;
+	padding-top: 20px;
+	border-radius: 5px;
+	background-color: #E0E0E0;
+	box-shadow: 1px 1px 1px grey;
 }
 
 #review_title {
 	color: white;
 	margin-left: 40px;
-	padding-top: 50px;
+	padding-top: 100px;
 	padding-bottom: 30px;
 }
 
@@ -166,7 +281,7 @@
 	top: 190px;
 }
 
-#rating_description {
+#rating_description h6 {
 	font-size: 20px !important;
 }
 
@@ -212,7 +327,16 @@
 	left: 80px;
 	background-color: #E0E0E0;
 	width: 300px;
+}
 
+#business_info_show ul {
+	margin: 0;
+	padding-bottom: 15px;
+}
+
+#business_info_show li {
+	list-style-type: none;
+	margin: 0;
 }
 
 #map_show {
@@ -220,25 +344,9 @@
 	top: 900px;
 	position: absolute;
 }
-/*#navbar ul li:hover {
-    background-color: #00A896;
-}*/
 
-/*.nav_button {
-	border-radius: 8px;
-	position: relative;
-	width: 40px;
-
+.yellow_button {
+	color: yellow, !important;
 }
-
-#signin_button {
-	border: 5px solid grey;
-	text-decoration: none;
-}
-
-#signup_button {
-	background-color: #35FF69;
-	border: 5px solid #35FF69;
-}*/
 
 
