@@ -21,6 +21,7 @@
  	background-color: #E0E0E0;
  }
 
+
  /*Nav Bar Stlying*/
 
 
@@ -302,9 +303,9 @@
 	position: relative;
 	top: 270px;
 	border-radius: 5px;
-	background-color: #E0E0E0;
+	/*background-color: #E0E0E0;*/
 	left: 5%;
-	box-shadow: 1px 1px 1px grey;
+	/*box-shadow: 1px 1px 1px grey;*/
 }
 
 #able_review_show ul li {
@@ -335,10 +336,10 @@
 
 #business_info_show {
 	top: 270px;
-	box-shadow: 1px 1px 1px grey;
-	border-radius: 5px;
+	/*box-shadow: 1px 1px 1px grey;*/
+	/*border-radius: 5px;*/
 	left: 80px;
-	background-color: #E0E0E0;
+	/*background-color: #E0E0E0;*/
 	width: 300px;
 	padding-bottom: 10px;
 }
@@ -357,16 +358,18 @@
 	width: 270px;
 	height: 200px;
 	position: relative;
-	z-index: 5;
+	z-index: 2;
 }
 
 #comment_form {
 	left: 5%;
 	margin-top: 150px;
 	padding-top: 20px;
-	border-radius: 5px;
-	background-color: #E0E0E0;
-	box-shadow: 1px 1px 1px grey;
+	/*border-radius: 5px;*/
+	border-top: 1px solid black;
+
+	/*background-color: #E0E0E0;
+	box-shadow: 1px 1px 1px grey;*/
 }
 
 .yellow_button {
@@ -374,8 +377,9 @@
 }
 
 #user_reviews_index {
-	border-radius: 5px;
-	border: 1px solid black;
+	border-bottom: 1px solid black;
+	/*border-radius: 5px;
+	border: 1px solid black;*/
 	margin-top: 10px;
 	margin-bottom: 10px;
 	width: 360px;

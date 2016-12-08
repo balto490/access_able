@@ -60,3 +60,29 @@
 #rating_description_list {
 	font-size: 30px;
 }
+
+ #welcome_left h5 {
+	height: 240px;
+	margin-top: 120px;
+	padding-left: 100px;
+	padding-right: 100px;
+	border-right: 1px solid black;
+	font-size: 30px;
+	font-family: 'Knewave', cursive;
+}
+
+
+
+#welcome_right {
+	top: 160px;
+	padding-left: 100px;
+	padding-right: 100px;
+
+}
+
+#welcome_right li {
+	list-style-type: none;
+	font-family: 'Knewave', cursive;
+	font-size: 30px;
+	padding-top: 20px;
+}

@@ -30,13 +30,16 @@
         <a href="<%= item[:url] %>">Visit Yelp Page</a></br> 
     </div>
     <div id="create_entry_form">
+    <% if user_signed_in? %>
         <%= form_for @location do |f| %>
-        <%= f.hidden_field :yelp_id, :value => item[:id] %>
-    
-        <div id="entry_button"><%= button_tag "Create Able Review", class: "button button-rounded button-flat-primary" %></div>
-    </div>
- </div></br>
+            <%= f.hidden_field :yelp_id, :value => item[:id] %>
+            <div id="entry_button"><%= button_tag "Create Able Review", class: "button button-rounded button-flat-primary" %></div>
         <% end %>
+    <% else %>
+        <div id="entry_button"><%= button_tag "Create Able Review", class: "button button-rounded button-flat-primary", :onclick => "alert('You must be signed in to create a review!')"%></div>
+    <% end %>
+      </div>
+ </div></br>
 <% end %>
 </div>
 

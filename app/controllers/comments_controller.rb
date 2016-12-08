@@ -15,7 +15,7 @@ def create
 	@comment = Comment.create(comment_params)
  
     if @comment.save
-      redirect_to '/locations/' + @comment.location_id
+      redirect_to '/locations/' + @comment.location_id.to_s 
     else
       flash.now[:danger] = "Your comment has no content"
     end 

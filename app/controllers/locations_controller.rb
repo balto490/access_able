@@ -92,7 +92,7 @@ class LocationsController < ApplicationController
       c.user_rating
     end.reduce &:+
     
-    if @comments.nil?
+    if !@location_rating.nil?
       @rating = @location_rating/@count
     end
 end
