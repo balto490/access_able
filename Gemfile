@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby "2.3.0"
+
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
