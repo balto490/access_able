@@ -11,6 +11,7 @@ gem 'area'
 gem 'yelp', require: 'yelp'
 gem 'execjs'
 gem 'gmaps4rails'
+gem 'rails_12factor'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
