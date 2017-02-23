@@ -1,7 +1,6 @@
 Rails.application.configure do
 
-  RAILS_SERVE_STATIC_FILES = true
-  RAILS_LOG_TO_STDOUT = true
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
