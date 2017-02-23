@@ -11,7 +11,7 @@ gem 'area'
 gem 'yelp', require: 'yelp'
 gem 'execjs'
 gem 'gmaps4rails'
-gem 'rails_12factor'
+
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -60,7 +60,7 @@ end
 
 group :production do
   gem 'pg'
- 
+  gem 'rails_12factor'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
