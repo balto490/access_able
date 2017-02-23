@@ -14,6 +14,7 @@ gem 'yelp', require: 'yelp'
 gem 'execjs'
 gem 'gmaps4rails'
 gem 'less-rails-bootstrap'
+gem 'sprockets', '3.7.1'
 
 
 
