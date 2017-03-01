@@ -158,7 +158,6 @@
 	margin-left: 37%;
 	background-color: #197BBD;
 	opacity: .98;
-	box-shadow: 2px 2px 1px grey;
 }
 
 /*Search Page*/
@@ -563,6 +562,20 @@
 		height: 50px;
 		margin-left: -131px;
 		top: 60px;
+	}
+
+	/*Login Page*/
+
+	#login_form {
+		border: 1px solid black;
+		width: 300px;
+		border-radius: 5px;
+		padding-left: 67px;
+		margin-top: 40px;
+		padding-bottom: 20px;
+		margin-left: 13%;
+		background-color: #197BBD;
+		opacity: .98;
 	}
 
 	#blue_map_welcome {
