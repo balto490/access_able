@@ -464,7 +464,7 @@
 	/*Search Page*/
 
 	#blue_map_locations {
-		width: 650px !important;
+		width: 650px ;
 		position: absolute;
 		top: -100px;
 		z-index: -1;
@@ -629,6 +629,72 @@
 		display: none;
 	}
 
+	#blue_map_locations {
+		width: 414px;
+		height: 410px;
+		position: absolute;
+		top: -100px;
+		z-index: -1;
+	}
+
+	#entry_button {
+		position: absolute;
+		left: 20%;
+		top: -160px;
+		width: 200px;
+	}
+
+	#submit {
+		padding-left: 0;
+		padding-top: 5px;
+	}
+
+	#location_search li{
+		display: inline-block;
+		margin-left: -66px;
+	}
+
+	#location_search {
+		margin-top: 150px;
+	}
+
+	#search {
+		height: 40px;
+		width: 400px;
+		font-size: 25px;
+	}
+
+	#location_titles {
+		display: none;
+	}
+
+	#yelp_location {
+		width: 414px;
+	}
+
+	#yelp_location .col-md-3 {
+		top: -40px;
+		width: 100px;
+		border-bottom: none;
+		display: inline-block;
+		position: relative;
+	}
+
+	#yelp_location .col-md-6 {
+		padding-left: 30px;
+		width: 300px;
+		border-bottom: none;
+		display: inline-block;
+		position: relative;
+	}
+
+	#entry_button {
+		position: relative;
+		left: 9%;
+		top: -20px;
+		padding-bottom: 5px;
+		width: 200px;
+	}
 
 
 

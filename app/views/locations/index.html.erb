@@ -9,7 +9,7 @@
 <div class="form-group top_form search rounded" id="location_search">
 <%= form_tag locations_path, method: :get do %>
     <ul>
-        <li><%= text_field_tag 'search', nil, :placeholder =>'Search' %></li>
+        <li id="search"><%= text_field_tag 'search', nil, :placeholder =>'Search' %></li>
         <li id="submit"><%= button_tag"Seach Locations", class: "button button-rounded button-flat-primary" %></li>
     <ul>
 <% end %>
