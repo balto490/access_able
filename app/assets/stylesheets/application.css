@@ -528,41 +528,41 @@
 
 	#sign_out_button {
 		position: absolute !important;
-		width: 400px;
+		width: 200px;
 		height: 50px;
-		left: 7px;
-		top: 110px;
+		left: 210px;
+		top: 65px;
 		opacity: 1 !important;
 		background-color: yellow;
 	}
 
 	#my_profile_button {
 		position: absolute !important;
-		width: 400px;
+		width: 200px;
 		height: 50px;
-		left: 7px;
-		top: 55px;
+		left: 3px;
+		top: 65px;
 	}
 
 	#signed_out_buttons li {
 		list-style-type: none;
-		padding-top: 3px;
+		padding-top: 4px;
 	}
 
 	#login_button {
 		position: relative;
-		width: 400px;
+		width: 200px;
 		height: 50px;
-		margin-left: -252px;
+		margin-left: -282px;
 		top: 60px;
 	}
 
 	#sign_up_button {
 		position: absolute;
-		width: 400px;
+		width: 200px;
 		height: 50px;
-		margin-left: -301px;
-		top: 120px;
+		margin-left: -131px;
+		top: 60px;
 	}
 
 	#blue_map_welcome {
@@ -596,14 +596,15 @@
 	}
 
 	.button.button-rounded.button-flat-primary {
-		width: 400px;
+		width: 200px;
 		height: 50px;
 	}
 
 	.search_form {
 		width: 400px;
 		height: 50px;
-		margin-left: 7px;
+		margin-bottom: 5px;
+		/*margin-left: 7px;*/
 	}
 
 	#welcome_right {
@@ -645,7 +646,7 @@
 	}
 
 	#submit {
-		padding-left: 0;
+		padding-left: 100px;
 		padding-top: 5px;
 	}
 
@@ -690,7 +691,7 @@
 
 	#entry_button {
 		position: relative;
-		left: 9%;
+		margin-left: 150px;
 		top: -20px;
 		padding-bottom: 5px;
 		width: 200px;
@@ -701,6 +702,16 @@
 }
 
 @media (max-width: 375px)  {
+
+
+	#blue_map_welcome {
+		width: 375px;
+		height: 360px;
+		overflow: hidden !important;
+		position: absolute;
+		top: 0;
+		z-index: -1;
+	}
 
 	#navbar {
 		width: 375px;
@@ -716,20 +727,20 @@
 
 	#sign_out_button {
 		position: absolute !important;
-		width: 361px;
-		left: 7px;
+		width: 180px;
+		left: 188px;
 	}
 
 	#search {
 		height: 40px;
-		left: 7px;
+		left: 1px;
 		width: 361px;
 		font-size: 25px;
 	}
 
 	#my_profile_button {
 		position: absolute !important;
-		width: 361px;
+		width: 180px;
 		left: 7px;
 	}
 
@@ -740,12 +751,14 @@
 
 	#login_button {
 		position: absolute;
-		left: 69%;
+		width: 180px;
+		left: 470px
 	}
 
 	#sign_up_button {
 		position: absolute;
-		left: 82%;
+		width: 180px;
+		left: 135px;
 		z-index: 6;
 	}
 
@@ -754,29 +767,27 @@
 	}
 
 	.button.button-rounded.button-flat-primary {
-		width: 361px;
+		width: 180px;
 		height: 50px;
+	
 	}
 
 	.search_form {
 		width: 361px;
 		height: 50px;
-		margin-left: 7px;
+		margin-left: 0;
 	}
 
-	#welcome_search {
-		margin-top: 115px;
-		padding: 0;
-	}
 
 	#location_title {
 		position: relative;
-		top: 60px;
+		top: 80px;
 		font-size: 35px;
 	}
 
 	#welcome_right {
-		top: 105px;
+		margin-top: 170px;
+		top: 0;
 		padding-left: 10px;
 		padding-right: 10px;
 	}
@@ -804,5 +815,24 @@
 		display: inline-block;
 		position: relative;
 	}
+
+	#entry_button {
+		left: -193%;
+	}
+
+	#submit {
+		padding-left: 90px;
+		padding-top: 5px;
+	}
+
+	#welcome_search {
+		padding-top: 30px;
+	}
+
+	#entry_button {
+		position: relative;
+		margin-left: 300px;
+	}
+
 }
 
