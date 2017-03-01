@@ -63,7 +63,7 @@
 
  #welcome_left h5 {
 	height: 240px;
-	margin-top: 120px;
+	margin-top: 210px;
 	padding-left: 100px;
 	padding-right: 100px;
 	border-right: 1px solid black;
@@ -74,7 +74,7 @@
 
 
 #welcome_right {
-	top: 160px;
+	margin-top: 210px;
 	padding-left: 100px;
 	padding-right: 100px;
 
@@ -85,5 +85,17 @@
 	font-family: 'Knewave', cursive;
 	font-size: 30px;
 	padding-top: 20px;
+}
+
+@media (max-width: 1100px)  {
+	
+	#welcome_left h5 {
+		margin-top: 150px;
+	}
+
+	#welcome_right {
+		margin-top: 150px;
+	}
+
 }
 
