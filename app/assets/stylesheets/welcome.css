@@ -22,6 +22,7 @@
 #location_title {
 	color: white;
 	font-family: 'Roboto', sans-serif;
+	font-size: 60px;
 
 }
 
@@ -35,7 +36,7 @@
 
 #welcome_search {
 	text-align: center;
-	padding-top: 80px;
+	padding-top: 140px;
 }
 
 #rated_location_list {
